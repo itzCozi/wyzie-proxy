@@ -1057,12 +1057,12 @@ const index = defineEventHandler((event) => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wyzie Proxy</title>
-    <meta name="description" content="A powerful subtitle scraping API for anything. <3" />
+    <meta name="description" content="A powerful scraping proxy for anything." />
     <meta name="keywords" content="proxy, scraper, wyzie proxy, cors, open-source" />
     <meta name="author" content="BadDeveloper" />
     <link rel="icon" href="https://i.postimg.cc/SsSRxQpr/proxy-logo.png" alt="Wyzie Proxy Logo" />
     <meta property="og:title" content="Wyzie Proxy" />
-    <meta property="og:description" content="A powerful subtitle scraping API for anything. <3" />
+    <meta property="og:description" content="A powerful scraping proxy for anything." />
     <meta property="og:image" content="https://i.postimg.cc/SsSRxQpr/proxy-logo.png" alt="Wyzie Proxy Logo" />
     <meta property="og:url" content="https://Proxy.wyzie.ru" />
     <meta property="og:type" content="website" />
@@ -1070,7 +1070,7 @@ const index = defineEventHandler((event) => {
     <link rel="canonical" href="https://Proxy.wyzie.ru" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Wyzie Proxy" />
-    <meta name="twitter:description" content="A powerful subtitle scraping API for anything. <3" />
+    <meta name="twitter:description" content="A powerful scraping proxy for anything." />
     <meta name="twitter:image" content="https://i.postimg.cc/SsSRxQpr/proxy-logo.png" alt="Wyzie Proxy Logo" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1138,14 +1138,14 @@ const index = defineEventHandler((event) => {
           <div class="space-y-4 mb-6">
             <div class="bg-mono-accent shadow-xl p-4 rounded-md flex flex-col gap-1">
               <h3 class="font-semibold text-type-subheader">Proxy Any Request</h3>
-              <div class="flex flex-row gap-1">
-                <a href="/example.com" alt="Example link: search by IMDB ID" title="Search by IMDB ID">
+              <div class="flex flex-wrap gap-1">
+                <a href="/example.com" alt="Example link: no protocol" title="Proxy No Protocol">
                   <code class="text-sm text-primary-500 hover:text-primary-600 transition duration-100 break-words">/example.com</code>
                 </a>
                 <span class="text-type-dimmed break-words mx-1">
                   or
                 </span>
-                <a href="/?destination=https://example.com" alt="Example link: search by TMDB ID" title="Search by TMDB ID">
+                <a href="/?destination=https://example.com" alt="Example link: destination parameter with protocol" title="Proxy Destination Parameter">
                   <code class="text-sm text-primary-500 hover:text-primary-600 transition duration-100 break-words">/?destination=https://example.com</code>
                 </a>
               </div>

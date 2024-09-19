@@ -96,7 +96,7 @@ export default defineEventHandler((event) => {
           <div class="space-y-4 mb-6">
             <div class="bg-mono-accent shadow-xl p-4 rounded-md flex flex-col gap-1">
               <h3 class="font-semibold text-type-subheader">Proxy Any Request</h3>
-              <div class="flex flex-row gap-1">
+              <div class="flex flex-wrap gap-1">
                 <a href="/example.com" alt="Example link: no protocol" title="Proxy No Protocol">
                   <code class="text-sm text-primary-500 hover:text-primary-600 transition duration-100 break-words">/example.com</code>
                 </a>
