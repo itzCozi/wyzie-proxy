@@ -1,10 +1,14 @@
-import { H3Event, EventHandlerRequest } from 'h3';
+import { H3Event, EventHandlerRequest } from "h3";
 
-export async function sendJson(ops: {
+export async function sendJson({
+  event,
+  data,
+  status = 200,
+}: {
   event: H3Event<EventHandlerRequest>;
   data: Record<string, any>;
   status?: number;
 }) {
-  setResponseStatus(ops.event, ops.status ?? 200);
-  await send(ops.event, JSON.stringify(ops.data, null, 2), 'application/json');
+  setResponseStatus(event, status);
+  await send(event, JSON.stringify(data, null, 2), "application/json");
 }

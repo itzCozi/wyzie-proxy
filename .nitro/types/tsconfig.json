@@ -2,9 +2,10 @@
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "strict": false,
+    "noEmit": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "allowJs": true,
     "resolveJsonModule": true,
     "jsx": "preserve",
@@ -14,6 +15,18 @@
     "paths": {
       "#imports": [
         "./nitro-imports"
+      ],
+      "~/*": [
+        "../../src/*"
+      ],
+      "@/*": [
+        "../../src/*"
+      ],
+      "~~/*": [
+        "../../*"
+      ],
+      "@@/*": [
+        "../../*"
       ]
     }
   },

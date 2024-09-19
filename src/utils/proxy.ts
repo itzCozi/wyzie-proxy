@@ -1,12 +1,6 @@
-import {
-  H3Event,
-  Duplex,
-  ProxyOptions,
-  getProxyRequestHeaders,
-  RequestHeaders,
-} from 'h3';
+import { H3Event, Duplex, ProxyOptions, getProxyRequestHeaders, RequestHeaders } from "h3";
 
-const PayloadMethods = new Set(['PATCH', 'POST', 'PUT', 'DELETE']);
+const PayloadMethods = new Set(["PATCH", "POST", "PUT", "DELETE"]);
 
 export interface ExtraProxyOptions {
   blacklistedHeaders?: string[];
@@ -15,28 +9,36 @@ export interface ExtraProxyOptions {
 function mergeHeaders(
   defaults: HeadersInit,
   ...inputs: (HeadersInit | RequestHeaders | undefined)[]
-) {
-  const _inputs = inputs.filter(Boolean) as HeadersInit[];
-  if (_inputs.length === 0) {
-    return defaults;
+): Headers {
+  const merged: Record<string, string> = {};
+
+  if (defaults instanceof Headers) {
+    defaults.forEach((value, key) => {
+      merged[key] = value;
+    });
+  } else {
+    Object.assign(merged, defaults);
   }
-  const merged = new Headers(defaults);
-  for (const input of _inputs) {
-    if (input.entries) {
-      for (const [key, value] of (input.entries as any)()) {
+
+  for (const input of inputs) {
+    if (!input) continue;
+
+    if (input instanceof Headers) {
+      input.forEach((value, key) => {
         if (value !== undefined) {
-          merged.set(key, value);
+          merged[key] = value;
         }
-      }
+      });
     } else {
-      for (const [key, value] of Object.entries(input)) {
+      Object.entries(input).forEach(([key, value]) => {
         if (value !== undefined) {
-          merged.set(key, value);
+          merged[key] = value;
         }
-      }
+      });
     }
   }
-  return merged;
+
+  return new Headers(merged);
 }
 
 export async function specificProxyRequest(
@@ -49,30 +51,37 @@ export async function specificProxyRequest(
   if (PayloadMethods.has(event.method)) {
     if (opts.streamRequest) {
       body = getRequestWebStream(event);
-      duplex = 'half';
+      duplex = "half";
     } else {
-      body = await readRawBody(event, false).catch(() => undefined);
+      try {
+        body = await readRawBody(event, false);
+      } catch {
+        body = undefined;
+      }
     }
   }
 
   const method = opts.fetchOptions?.method || event.method;
   const oldHeaders = getProxyRequestHeaders(event);
-  opts.blacklistedHeaders?.forEach((header) => {
-    const keys = Object.keys(oldHeaders).filter(
-      (v) => v.toLowerCase() === header.toLowerCase(),
-    );
-    keys.forEach((k) => delete oldHeaders[k]);
-  });
 
-  const fetchHeaders = mergeHeaders(
-    oldHeaders,
-    opts.fetchOptions?.headers,
-    opts.headers,
-  );
+  if (opts.blacklistedHeaders) {
+    const blacklistedHeadersSet = new Set(
+      opts.blacklistedHeaders.map((header) => header.toLowerCase()),
+    );
+    const oldHeaderKeys = Object.keys(oldHeaders);
+    for (const key of oldHeaderKeys) {
+      if (blacklistedHeadersSet.has(key.toLowerCase())) {
+        delete oldHeaders[key];
+      }
+    }
+  }
+
+  const fetchHeaders = mergeHeaders(oldHeaders, opts.fetchOptions?.headers, opts.headers);
+
   const headerObj = Object.fromEntries([...(fetchHeaders.entries as any)()]);
-  if (process.env.REQ_DEBUG === 'true') {
+  if (process.env.REQ_DEBUG === "true") {
     console.log({
-      type: 'request',
+      type: "request",
       method,
       url: target,
       headers: headerObj,

@@ -1,0 +1,7 @@
+build:cloudflare
+
+# Ignore specific directories:
+.nitro
+node_modules
+cloudflare
+output
