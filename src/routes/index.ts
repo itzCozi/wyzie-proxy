@@ -67,7 +67,7 @@ export default defineEventHandler((event) => {
   <body class="bg-mono-background min-h-screen flex flex-col items-center justify-center p-4 cursor-default">
     <div class="bg-mono-card rounded-lg shadow-2xl p-8 max-w-xl w-full">
       <header class="flex items-center justify-between mb-4">
-        <h1 class="text-4xl font-bold text-primary-700">Wyzie <span class="text-type-emphasized">Proxy</span></h1>
+        <h1 class="text-4xl font-bold text-primary-700"><a href="https://wyzie.ru" alt="Toolset homepage" title="Toolset Homepage">Wyzie</a> <span class="text-type-emphasized">Proxy</span></h1>
         <div class="group w-10 h-auto shadow-md transition-shadow duration-500 hover:shadow-xl">
           <a href="/" title="Home" alt="Home">
             <img src="https://i.postimg.cc/SsSRxQpr/proxy-logo.png" class="w-full h-auto transition-transform duration-300 group-hover:scale-110" alt="Wyzie Proxy logo" />

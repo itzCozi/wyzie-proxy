@@ -1,6 +1,8 @@
 import { getBodyBuffer } from "@/utils/body";
 import { getProxyHeaders, getAfterResponseHeaders, getBlacklistedHeaders } from "@/utils/headers";
 
+// TODO: Fix the issue when  the user goes to https://proxy.wyzie.ru/reddit.com and clicks on a link and then gets taken to https://proxy.wyzie.ru/r/midlyinfuriating which doesnt exist, we need to fix routing.
+
 export default defineEventHandler(async (event) => {
   // handle cors, if applicable
   if (isPreflightRequest(event)) return handleCors(event, {});

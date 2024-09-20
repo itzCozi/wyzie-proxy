@@ -5,7 +5,7 @@ import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { provider, isWindows } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/std-env@3.7.0/node_modules/std-env/dist/index.mjs';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, setResponseHeader, send, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, createError, getRouterParam, getQuery as getQuery$1, readBody, getRequestWebStream, readRawBody, getProxyRequestHeaders, sendProxy, isPreflightRequest, handleCors, setResponseHeaders } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/h3@1.12.0/node_modules/h3/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/ofetch@1.3.4/node_modules/ofetch/dist/node.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/ofetch@1.4.0/node_modules/ofetch/dist/node.mjs';
 import destr from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/destr@2.0.3/node_modules/destr/dist/index.mjs';
 import { createCall, createFetch } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/unenv@1.10.0/node_modules/unenv/runtime/fetch/index.mjs';
 import { createHooks } from 'file:///workspaces/wyzie-proxy/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
@@ -1109,7 +1109,7 @@ const index = defineEventHandler((event) => {
   <body class="bg-mono-background min-h-screen flex flex-col items-center justify-center p-4 cursor-default">
     <div class="bg-mono-card rounded-lg shadow-2xl p-8 max-w-xl w-full">
       <header class="flex items-center justify-between mb-4">
-        <h1 class="text-4xl font-bold text-primary-700">Wyzie <span class="text-type-emphasized">Proxy</span></h1>
+        <h1 class="text-4xl font-bold text-primary-700"><a href="https://wyzie.ru" alt="Toolset homepage" title="Toolset Homepage">Wyzie</a> <span class="text-type-emphasized">Proxy</span></h1>
         <div class="group w-10 h-auto shadow-md transition-shadow duration-500 hover:shadow-xl">
           <a href="/" title="Home" alt="Home">
             <img src="https://i.postimg.cc/SsSRxQpr/proxy-logo.png" class="w-full h-auto transition-transform duration-300 group-hover:scale-110" alt="Wyzie Proxy logo" />
