@@ -18,7 +18,7 @@
     "nitropack": "^2.9.7"
   },
   "devDependencies": {
-    "@rollup/wasm-node": "^4.22.2",
+    "@rollup/wasm-node": "^4.22.4",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.57.1",
